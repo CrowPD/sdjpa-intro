@@ -15,7 +15,7 @@ public class DataInitializer implements CommandLineRunner {
     }
 
     @Override
-    public void run(String... args) throws Exception {
+    public void run(String... args) {
 
         Book book1 = new Book("Domain Driven Design", "123", "RandomHouse");
         System.out.printf("id: %s%n", book1.getId());
@@ -23,7 +23,7 @@ public class DataInitializer implements CommandLineRunner {
         System.out.printf("id: %s%n", book1Saved.getId());
 
         Book book2 = new Book("Testing Driven Development", "345", "O'Meily Pub");
-        Book book2Saved = bookRepository.save(book2);
+        bookRepository.save(book2);
 
         System.out.printf("Total amount: %d%n", bookRepository.count());
         bookRepository.findAll().forEach(b -> System.out.println(b.getTitle()));
