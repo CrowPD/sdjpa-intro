@@ -2,7 +2,6 @@ package guru.springframework.sdjpaintro.bootstrap;
 
 import guru.springframework.sdjpaintro.domain.Book;
 import guru.springframework.sdjpaintro.repositories.BookRepository;
-import org.hibernate.annotations.CollectionTypeRegistration;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 
