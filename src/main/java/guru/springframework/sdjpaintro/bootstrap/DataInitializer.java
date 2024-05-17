@@ -3,8 +3,10 @@ package guru.springframework.sdjpaintro.bootstrap;
 import guru.springframework.sdjpaintro.domain.Book;
 import guru.springframework.sdjpaintro.repositories.BookRepository;
 import org.springframework.boot.CommandLineRunner;
+import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Component;
 
+@Profile({"local", "default"})
 @Component
 public class DataInitializer implements CommandLineRunner {
 
@@ -19,11 +21,9 @@ public class DataInitializer implements CommandLineRunner {
         bookRepository.deleteAll();
 
         Book book1 = new Book("Domain Driven Design", "123", "RandomHouse");
-        System.out.printf("id: %s%n", book1.getId());
-        Book book1Saved = bookRepository.save(book1);
-        System.out.printf("id: %s%n", book1Saved.getId());
+		bookRepository.save(book1);
 
-        Book book2 = new Book("Testing Driven Development", "345", "O'Meily Pub");
+		Book book2 = new Book("Testing Driven Development", "345", "O'Meily Pub");
         bookRepository.save(book2);
 
         System.out.printf("Total amount: %d%n", bookRepository.count());
