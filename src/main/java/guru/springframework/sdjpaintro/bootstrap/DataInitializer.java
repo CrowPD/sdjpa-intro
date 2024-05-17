@@ -16,19 +16,17 @@ public class DataInitializer implements CommandLineRunner {
 
     @Override
     public void run(String... args) {
+        bookRepository.deleteAll();
 
-        if (bookRepository.count() == 0) {
+        Book book1 = new Book("Domain Driven Design", "123", "RandomHouse");
+        System.out.printf("id: %s%n", book1.getId());
+        Book book1Saved = bookRepository.save(book1);
+        System.out.printf("id: %s%n", book1Saved.getId());
 
-            Book book1 = new Book("Domain Driven Design", "123", "RandomHouse");
-            System.out.printf("id: %s%n", book1.getId());
-            Book book1Saved = bookRepository.save(book1);
-            System.out.printf("id: %s%n", book1Saved.getId());
+        Book book2 = new Book("Testing Driven Development", "345", "O'Meily Pub");
+        bookRepository.save(book2);
 
-            Book book2 = new Book("Testing Driven Development", "345", "O'Meily Pub");
-            bookRepository.save(book2);
-
-            System.out.printf("Total amount: %d%n", bookRepository.count());
-            bookRepository.findAll().forEach(b -> System.out.println(b.getTitle()));
-        }
+        System.out.printf("Total amount: %d%n", bookRepository.count());
+        bookRepository.findAll().forEach(b -> System.out.println(b.getTitle()));
     }
 }
