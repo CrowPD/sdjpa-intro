@@ -20,10 +20,10 @@ public class DataInitializer implements CommandLineRunner {
     public void run(String... args) {
         bookRepository.deleteAll();
 
-        Book book1 = new Book("Domain Driven Design", "123", "RandomHouse");
+        Book book1 = new Book("Domain Driven Design", "123", "RandomHouse", null);
 		bookRepository.save(book1);
 
-		Book book2 = new Book("Testing Driven Development", "345", "O'Meily Pub");
+		Book book2 = new Book("Testing Driven Development", "345", "O'Meily Pub", null);
         bookRepository.save(book2);
 
         System.out.printf("Total amount: %d%n", bookRepository.count());
